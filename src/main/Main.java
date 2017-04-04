@@ -12,8 +12,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        /*FileLoader fl = new FileLoader(System.getProperty("user.dir")+"/info.csv");
-        List<String> list = new LinkedList<>(); //List of the comparator of the first QueryParameters
+        FileLoader fl = new FileLoader(System.getProperty("user.dir")+"/info.csv");
+        /*List<String> list = new LinkedList<>(); //List of the comparator of the first QueryParameters
         list.add("22");
         QueryParameters qP = new QueryParameters(4,1,list);
         List<String> list2 = new LinkedList<>();//List of the comparator of the second QueryParameters
@@ -41,7 +41,7 @@ public class Main {
         qR = q.getSingleQuery(qP);
         qR.print();*/
 
-        new Menu();
+        //new Menu();
 
 
     }
