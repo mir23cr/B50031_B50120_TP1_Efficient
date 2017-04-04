@@ -2,3 +2,4 @@ Name,LastName,Phone,Age,Single,Height,InductionDate
 String,String,String,int,boolean,double,date
 Vladimir,Aguilar,85412124,22,false,1.72,01/01/2005
 Mariana,Abellan,89947214,19,true,1.65,01/01/2010
+Vladimir,Casas,82523214,18,false,1.78,04/08/2017

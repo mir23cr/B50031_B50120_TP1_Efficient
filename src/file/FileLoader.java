@@ -18,7 +18,7 @@ public class FileLoader {
     private ArrayList<String> columnsNames;
     private BufferedReader currentLine;
     private ArrayList<String[]> allData;
-    private ArrayList<Map<Object,LinkedList<Integer>>> sortedData;
+    private ArrayList<NavigableMap<Object,LinkedList<Integer>>> sortedData;
     private List<Parser> parsers;
 
     public FileLoader(String address) throws IOException {
@@ -33,11 +33,11 @@ public class FileLoader {
             BufferedReader read = new BufferedReader(new FileReader(address));
             String line = read.readLine();
             String line2 = read.readLine();
-            Map<Object,LinkedList<Integer>> currentMap;
+            NavigableMap<Object,LinkedList<Integer>> currentMap;
             LinkedList<Integer> newList;
             LinkedList<Integer> currentList;
             int rowIndex;
-            Pair<Map<Object,LinkedList<Integer>>,Parser> p;
+            Pair<NavigableMap<Object,LinkedList<Integer>>,Parser> p;
 
 
             values = line.split("\\s*,\\s*");
@@ -51,7 +51,11 @@ public class FileLoader {
                 sortedData.add(p.getKey());
                 parsers.add(p.getValue());
             }
+            for(Parser p1 : parsers){
+                System.out.println(p1.getClass().toString());
+            }
             System.out.println("TAMAÑO:" + sortedData.size());
+            System.out.println("Parsers:" + parsers.size());
 
             this.currentLine = read;
             values = this.getRow();
@@ -60,8 +64,8 @@ public class FileLoader {
                 allData.add(values);
                 for(int i =0; i < values.length; i++){
                     currentMap = this.sortedData.get(i);
+                    this.getParsedValue(i,values[i]);
                     if(!currentMap.containsKey(parsers.get(i).parse(values[i]))){
-                        System.out.println(columnsNames.get(i));
                         newList = new LinkedList<Integer>();
                         newList.add(rowIndex);
                         currentMap.put(this.getParsedValue(i,values[i]),newList);
@@ -82,7 +86,7 @@ public class FileLoader {
                     entry = iter.next();
                     System.out.print(entry.getKey().toString() + " ");
                     for(Integer l : entry.getValue()){
-                        System.out.println(l + " ");
+                        System.out.print(l + " ");
                     }
                     System.out.println();
                 }
@@ -125,29 +129,29 @@ public class FileLoader {
         }
     }
 
-    public Pair<Map<Object,LinkedList<Integer>>,Parser> getMapColumn(String typeColumn){
-        Map newMap = null;
+    public Pair<NavigableMap<Object,LinkedList<Integer>>,Parser> getMapColumn(String typeColumn){
+        NavigableMap newMap = null;
         Parser p = null;
-        Pair<Map<Object,LinkedList<Integer>>,Parser> pair;
+        Pair<NavigableMap<Object,LinkedList<Integer>>,Parser> pair;
         switch (typeColumn){
             case "String":
-                newMap = new HashMap<String,LinkedList<Integer>>();
+                newMap = new TreeMap<String,LinkedList<Integer>>();
                 p = new StringParser();
                 break;
             case "int":
-                newMap = new HashMap<Integer,LinkedList<Integer>>();
+                newMap = new TreeMap<Integer,LinkedList<Integer>>();
                 p = new IntegerParser();
                 break;
             case "double":
-                newMap = new HashMap<Double,LinkedList<Integer>>();
+                newMap = new TreeMap<Double,LinkedList<Integer>>();
                 p = new DoubleParser();
                 break;
             case "date":
-                newMap = new HashMap<Date,LinkedList<Integer>>();
+                newMap = new TreeMap<Date,LinkedList<Integer>>();
                 p = new DateParser();
                 break;
-            case "bool":
-                newMap = new HashMap<Boolean,LinkedList<Integer>>();
+            case "boolean":
+                newMap = new TreeMap<Boolean,LinkedList<Integer>>();
                 p = new BooleanParser();
                 break;
         }
