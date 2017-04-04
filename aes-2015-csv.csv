@@ -1,0 +1,238 @@
+Year,Industry_aggregation_NZSIOC,Industry_code_NZSIOC,Industry_name_NZSIOC,Units,Variable_code,Variable_name,Variable_category,Value
+int,String,String,String,String,String,String,String,int
+2015,Level 1,99999,All industries  ,Dollars (millions),H01,Total income,Financial performance,590050
+2015,Level 1,99999,All industries  ,Dollars (millions),H02,Sales of goods not further processed,Financial performance,0
+2015,Level 1,99999,All industries  ,Dollars (millions),H03,Sales of other goods and services,Financial performance,0
+2015,Level 1,99999,All industries  ,Dollars (millions),H04,Sales government funding grants and subsidies,Financial performance,518885
+2015,Level 1,99999,All industries  ,Dollars (millions),H05,Interest dividends and donations,Financial performance,53898
+2015,Level 1,99999,All industries  ,Dollars (millions),H06,Government funding grants and subsidies,Financial performance,0
+2015,Level 1,99999,All industries  ,Dollars (millions),H07,Non-operating income,Financial performance,17266
+2015,Level 1,99999,All industries  ,Dollars (millions),H08,Total expenditure,Financial performance,528163
+2015,Level 1,99999,All industries  ,Dollars (millions),H09,Interest and donations,Financial performance,38141
+2015,Level 1,99999,All industries  ,Dollars (millions),H10,Indirect taxes,Financial performance,6438
+2015,Level 1,99999,All industries  ,Dollars (millions),H11,Depreciation,Financial performance,17278
+2015,Level 1,99999,All industries  ,Dollars (millions),H12,Salaries and wages paid,Financial performance,88708
+2015,Level 1,99999,All industries  ,Dollars (millions),H13,Redundancy and severance,Financial performance,259
+2015,Level 1,99999,All industries  ,Dollars (millions),H14,Salaries and wages to self employed commission agents,Financial performance,1685
+2015,Level 1,99999,All industries  ,Dollars (millions),H17,Purchases of goods bought for resale,Financial performance,0
+2015,Level 1,99999,All industries  ,Dollars (millions),H18,Other purchases and operating expenses,Financial performance,0
+2015,Level 1,99999,All industries  ,Dollars (millions),H19,Purchases and other operating expenses,Financial performance,362152
+2015,Level 1,99999,All industries  ,Dollars (millions),H20,Non-operating expenses,Financial performance,13761
+2015,Level 1,99999,All industries  ,Dollars (millions),H21,Opening stocks,Financial performance,53297
+2015,Level 1,99999,All industries  ,Dollars (millions),H22,Closing stocks,Financial performance,53946
+2015,Level 1,99999,All industries  ,Dollars (millions),H23,Surplus before income tax,Financial performance,62536
+2015,Level 1,99999,All industries  ,Dollars (millions),H24,Total assets,Financial position,1792488
+2015,Level 1,99999,All industries  ,Dollars (millions),H25,Current assets,Financial position,524779
+2015,Level 1,99999,All industries  ,Dollars (millions),H26,Fixed tangible assets,Financial position,410187
+2015,Level 1,99999,All industries  ,Dollars (millions),H29,Other assets,Financial position,857523
+2015,Level 1,99999,All industries  ,Dollars (millions),H30,Total equity and liabilities,Financial position,1792488
+2015,Level 1,99999,All industries  ,Dollars (millions),H31,Shareholders funds or owners equity,Financial position,551443
+2015,Level 1,99999,All industries  ,Dollars (millions),H32,Current liabilities,Financial position,700256
+2015,Level 1,99999,All industries  ,Dollars (millions),H33,Other liabilities,Financial position,540790
+2015,Level 1,99999,All industries  ,Dollars  ,H34,Total income per employee count(3),Financial ratios,352200
+2015,Level 1,99999,All industries  ,Dollars  ,H35,Surplus per employee count,Financial ratios,37300
+2015,Level 1,99999,All industries  ,Percentage,H36,Current ratio,Financial ratios,75
+2015,Level 1,99999,All industries  ,Percentage,H37,Quick ratio,Financial ratios,67
+2015,Level 1,99999,All industries  ,Percentage,H39,Return on equity,Financial ratios,11
+2015,Level 1,99999,All industries  ,Percentage,H40,Return on total assets,Financial ratios,3
+2015,Level 1,99999,All industries  ,Percentage,H41,Liabilities structure,Financial ratios,31
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H01,Total income,Financial performance,3508
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H02,Sales of goods not further processed,Financial performance,0
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H03,Sales of other goods and services,Financial performance,0
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H04,Sales government funding grants and subsidies,Financial performance,3329
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H05,Interest dividends and donations,Financial performance,56
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H06,Government funding grants and subsidies,Financial performance,0
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H07,Non-operating income,Financial performance,124
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H08,Total expenditure,Financial performance,3059
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H09,Interest and donations,Financial performance,191
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H10,Indirect taxes,Financial performance,32
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H11,Depreciation,Financial performance,159
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H12,Salaries and wages paid,Financial performance,600
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H13,Redundancy and severance,Financial performance,0
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H17,Purchases of goods bought for resale,Financial performance,0
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H18,Other purchases and operating expenses,Financial performance,0
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H19,Purchases and other operating expenses,Financial performance,2069
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H20,Non-operating expenses,Financial performance,7
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H21,Opening stocks,Financial performance,285
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H22,Closing stocks,Financial performance,298
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H23,Surplus before income tax,Financial performance,462
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H24,Total assets,Financial position,10140
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H25,Current assets,Financial position,1916
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H26,Fixed tangible assets,Financial position,6858
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H29,Other assets,Financial position,1366
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H30,Total equity and liabilities,Financial position,10140
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H31,Shareholders funds or owners equity,Financial position,4347
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H32,Current liabilities,Financial position,2724
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars (millions),H33,Other liabilities,Financial position,3069
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars  ,H34,Total income per employee count(3),Financial ratios,151000
+2015,Level 4,AA111,Horticulture and Fruit Growing,Dollars  ,H35,Surplus per employee count,Financial ratios,19900
+2015,Level 4,AA111,Horticulture and Fruit Growing,Percentage,H36,Current ratio,Financial ratios,70
+2015,Level 4,AA111,Horticulture and Fruit Growing,Percentage,H37,Quick ratio,Financial ratios,59
+2015,Level 4,AA111,Horticulture and Fruit Growing,Percentage,H39,Return on equity,Financial ratios,11
+2015,Level 4,AA111,Horticulture and Fruit Growing,Percentage,H40,Return on total assets,Financial ratios,5
+2015,Level 4,AA111,Horticulture and Fruit Growing,Percentage,H41,Liabilities structure,Financial ratios,43
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H01,Total income,Financial performance,3508
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H02,Sales of goods not further processed,Financial performance,0
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H03,Sales of other goods and services,Financial performance,0
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H04,Sales government funding grants and subsidies,Financial performance,3329
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H05,Interest dividends and donations,Financial performance,56
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H06,Government funding grants and subsidies,Financial performance,0
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H07,Non-operating income,Financial performance,124
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H08,Total expenditure,Financial performance,3059
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H09,Interest and donations,Financial performance,191
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H10,Indirect taxes,Financial performance,32
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H11,Depreciation,Financial performance,159
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H12,Salaries and wages paid,Financial performance,600
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H13,Redundancy and severance,Financial performance,0
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H17,Purchases of goods bought for resale,Financial performance,0
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H18,Other purchases and operating expenses,Financial performance,0
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H19,Purchases and other operating expenses,Financial performance,2069
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H20,Non-operating expenses,Financial performance,7
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H21,Opening stocks,Financial performance,285
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H22,Closing stocks,Financial performance,298
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H23,Surplus before income tax,Financial performance,462
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H24,Total assets,Financial position,10140
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H25,Current assets,Financial position,1916
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H26,Fixed tangible assets,Financial position,6858
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H29,Other assets,Financial position,1366
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H30,Total equity and liabilities,Financial position,10140
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H31,Shareholders funds or owners equity,Financial position,4347
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H32,Current liabilities,Financial position,2724
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars (millions),H33,Other liabilities,Financial position,3069
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars  ,H34,Total income per employee count(3),Financial ratios,151000
+2015,Level 3,AA11,Horticulture and Fruit Growing,Dollars  ,H35,Surplus per employee count,Financial ratios,19900
+2015,Level 3,AA11,Horticulture and Fruit Growing,Percentage,H36,Current ratio,Financial ratios,70
+2015,Level 3,AA11,Horticulture and Fruit Growing,Percentage,H37,Quick ratio,Financial ratios,59
+2015,Level 3,AA11,Horticulture and Fruit Growing,Percentage,H39,Return on equity,Financial ratios,11
+2015,Level 3,AA11,Horticulture and Fruit Growing,Percentage,H40,Return on total assets,Financial ratios,5
+2015,Level 3,AA11,Horticulture and Fruit Growing,Percentage,H41,Liabilities structure,Financial ratios,43
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H01,Total income,Financial performance,10092
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H02,Sales of goods not further processed,Financial performance,0
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H03,Sales of other goods and services,Financial performance,0
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H04,Sales government funding grants and subsidies,Financial performance,9429
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H05,Interest dividends and donations,Financial performance,140
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H06,Government funding grants and subsidies,Financial performance,0
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H07,Non-operating income,Financial performance,524
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H08,Total expenditure,Financial performance,8730
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H09,Interest and donations,Financial performance,715
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H10,Indirect taxes,Financial performance,173
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H11,Depreciation,Financial performance,481
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H12,Salaries and wages paid,Financial performance,865
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H13,Redundancy and severance,Financial performance,0
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H17,Purchases of goods bought for resale,Financial performance,0
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H18,Other purchases and operating expenses,Financial performance,0
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H19,Purchases and other operating expenses,Financial performance,6434
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H20,Non-operating expenses,Financial performance,62
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H21,Opening stocks,Financial performance,5292
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H22,Closing stocks,Financial performance,5149
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H23,Surplus before income tax,Financial performance,1218
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H24,Total assets,Financial position,50290
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H25,Current assets,Financial position,9889
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H26,Fixed tangible assets,Financial position,31973
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H29,Other assets,Financial position,8428
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H30,Total equity and liabilities,Financial position,50290
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H31,Shareholders funds or owners equity,Financial position,28967
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H32,Current liabilities,Financial position,7916
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars (millions),H33,Other liabilities,Financial position,13408
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars  ,H34,Total income per employee count(3),Financial ratios,476700
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Dollars  ,H35,Surplus per employee count,Financial ratios,57600
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Percentage,H36,Current ratio,Financial ratios,125
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Percentage,H37,Quick ratio,Financial ratios,60
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Percentage,H39,Return on equity,Financial ratios,4
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Percentage,H40,Return on total assets,Financial ratios,2
+2015,Level 4,AA121,Sheep Beef Cattle and Grain Farming,Percentage,H41,Liabilities structure,Financial ratios,58
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H01,Total income,Financial performance,10092
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H02,Sales of goods not further processed,Financial performance,0
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H03,Sales of other goods and services,Financial performance,0
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H04,Sales government funding grants and subsidies,Financial performance,9429
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H05,Interest dividends and donations,Financial performance,140
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H06,Government funding grants and subsidies,Financial performance,0
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H07,Non-operating income,Financial performance,524
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H08,Total expenditure,Financial performance,8730
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H09,Interest and donations,Financial performance,715
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H10,Indirect taxes,Financial performance,173
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H11,Depreciation,Financial performance,481
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H12,Salaries and wages paid,Financial performance,865
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H13,Redundancy and severance,Financial performance,0
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H17,Purchases of goods bought for resale,Financial performance,0
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H18,Other purchases and operating expenses,Financial performance,0
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H19,Purchases and other operating expenses,Financial performance,6434
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H20,Non-operating expenses,Financial performance,62
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H21,Opening stocks,Financial performance,5292
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H22,Closing stocks,Financial performance,5149
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H23,Surplus before income tax,Financial performance,1218
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H24,Total assets,Financial position,50290
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H25,Current assets,Financial position,9889
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H26,Fixed tangible assets,Financial position,31973
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H29,Other assets,Financial position,8428
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H30,Total equity and liabilities,Financial position,50290
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H31,Shareholders funds or owners equity,Financial position,28967
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H32,Current liabilities,Financial position,7916
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars (millions),H33,Other liabilities,Financial position,13408
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars  ,H34,Total income per employee count(3),Financial ratios,476700
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Dollars  ,H35,Surplus per employee count,Financial ratios,57600
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Percentage,H36,Current ratio,Financial ratios,125
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Percentage,H37,Quick ratio,Financial ratios,60
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Percentage,H39,Return on equity,Financial ratios,4
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Percentage,H40,Return on total assets,Financial ratios,2
+2015,Level 3,AA12,Sheep Beef Cattle and Grain Farming,Percentage,H41,Liabilities structure,Financial ratios,58
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H01,Total income,Financial performance,12979
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H02,Sales of goods not further processed,Financial performance,0
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H03,Sales of other goods and services,Financial performance,0
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H04,Sales government funding grants and subsidies,Financial performance,12393
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H05,Interest dividends and donations,Financial performance,171
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H06,Government funding grants and subsidies,Financial performance,0
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H07,Non-operating income,Financial performance,415
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H08,Total expenditure,Financial performance,11992
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H09,Interest and donations,Financial performance,1714
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H10,Indirect taxes,Financial performance,167
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H11,Depreciation,Financial performance,664
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H12,Salaries and wages paid,Financial performance,1360
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H13,Redundancy and severance,Financial performance,0
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H17,Purchases of goods bought for resale,Financial performance,0
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H18,Other purchases and operating expenses,Financial performance,0
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H19,Purchases and other operating expenses,Financial performance,8035
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H20,Non-operating expenses,Financial performance,52
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H21,Opening stocks,Financial performance,6876
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H22,Closing stocks,Financial performance,6724
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H23,Surplus before income tax,Financial performance,834
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H24,Total assets,Financial position,62148
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H25,Current assets,Financial position,10544
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H26,Fixed tangible assets,Financial position,38315
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H29,Other assets,Financial position,13289
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H30,Total equity and liabilities,Financial position,62148
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H31,Shareholders funds or owners equity,Financial position,22688
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H32,Current liabilities,Financial position,9129
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars (millions),H33,Other liabilities,Financial position,30332
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars  ,H34,Total income per employee count(3),Financial ratios,477100
+2015,Level 4,AA131,Dairy Cattle Farming,Dollars  ,H35,Surplus per employee count,Financial ratios,30700
+2015,Level 4,AA131,Dairy Cattle Farming,Percentage,H36,Current ratio,Financial ratios,116
+2015,Level 4,AA131,Dairy Cattle Farming,Percentage,H37,Quick ratio,Financial ratios,42
+2015,Level 4,AA131,Dairy Cattle Farming,Percentage,H39,Return on equity,Financial ratios,4
+2015,Level 4,AA131,Dairy Cattle Farming,Percentage,H40,Return on total assets,Financial ratios,1
+2015,Level 4,AA131,Dairy Cattle Farming,Percentage,H41,Liabilities structure,Financial ratios,37
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H01,Total income,Financial performance,12979
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H02,Sales of goods not further processed,Financial performance,0
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H03,Sales of other goods and services,Financial performance,0
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H04,Sales government funding grants and subsidies,Financial performance,12393
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H05,Interest dividends and donations,Financial performance,171
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H06,Government funding grants and subsidies,Financial performance,0
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H07,Non-operating income,Financial performance,415
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H08,Total expenditure,Financial performance,11992
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H09,Interest and donations,Financial performance,1714
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H10,Indirect taxes,Financial performance,167
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H11,Depreciation,Financial performance,664
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H12,Salaries and wages paid,Financial performance,1360
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H13,Redundancy and severance,Financial performance,0
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H17,Purchases of goods bought for resale,Financial performance,0
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H18,Other purchases and operating expenses,Financial performance,0
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H19,Purchases and other operating expenses,Financial performance,8035
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H20,Non-operating expenses,Financial performance,52
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H21,Opening stocks,Financial performance,6876
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H22,Closing stocks,Financial performance,6724
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H23,Surplus before income tax,Financial performance,834
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H24,Total assets,Financial position,62148
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H25,Current assets,Financial position,10544
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H26,Fixed tangible assets,Financial position,38315
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H29,Other assets,Financial position,13289
+2015,Level 3,AA13,Dairy Cattle Farming,Dollars (millions),H30,Total equity and liabilities,Financial position,62148

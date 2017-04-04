@@ -3,11 +3,13 @@ package file;
 import javafx.util.Pair;
 import parser.*;
 
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 import java.io.BufferedReader;
+import java.util.List;
 
 /**
  * Created by vladimir.aguilar on 24/3/2017 .
@@ -51,17 +53,13 @@ public class FileLoader {
                 sortedData.add(p.getKey());
                 parsers.add(p.getValue());
             }
-            for(Parser p1 : parsers){
-                System.out.println(p1.getClass().toString());
-            }
-            System.out.println("TAMAÑO:" + sortedData.size());
-            System.out.println("Parsers:" + parsers.size());
 
             this.currentLine = read;
             values = this.getRow();
             rowIndex = 0;
             while(values != null){
                 allData.add(values);
+
                 for(int i =0; i < values.length; i++){
                     currentMap = this.sortedData.get(i);
                     this.getParsedValue(i,values[i]);
@@ -70,7 +68,6 @@ public class FileLoader {
                         newList.add(rowIndex);
                         currentMap.put(this.getParsedValue(i,values[i]),newList);
                     }else{
-                        System.out.println(columnsNames.get(i));
                         currentMap.get(this.getParsedValue(i,values[i])).add(rowIndex);
                     }
                 }

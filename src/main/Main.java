@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        FileLoader fl = new FileLoader(System.getProperty("user.dir")+"/info.csv");
+        FileLoader fl = new FileLoader(System.getProperty("user.dir")+"/aes-2015-csv.csv");
         /*List<String> list = new LinkedList<>(); //List of the comparator of the first QueryParameters
         list.add("22");
         QueryParameters qP = new QueryParameters(4,1,list);
