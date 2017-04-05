@@ -11,56 +11,100 @@
 * */
 package filter;
 
-import java.util.List;
+import java.util.*;
 
-public abstract class FilteringOperation <T>{
-    public Boolean makeSingleOperation(int opID, List<T> comparator, T toCompare){
-        Boolean canMakeOperation;
+public class FilteringOperation <T>{
+    public LinkedList<Integer> makeSingleOperation(int opID, List<T> comparator, TreeMap<T,LinkedList<Integer>> toCompare){
+        LinkedList<Integer> result;
         switch (opID){
             case 1:
-                canMakeOperation = this.isEqual(comparator.get(0), toCompare);
+                result = this.getEqualIndex(comparator.get(0), toCompare);
                 break;
             case 2:
-                canMakeOperation = this.isDifferent(comparator.get(0), toCompare);
+                result = this.getDifferentIndex(comparator.get(0), toCompare);
                 break;
             case 3:
-                canMakeOperation = this.isGreater(comparator.get(0), toCompare);
+                result = this.getGreaterIndex(comparator.get(0), toCompare);
                 break;
             case 4:
-                canMakeOperation = this.isSmaller(comparator.get(0), toCompare);
+                result = this.getSmallerIndex(comparator.get(0), toCompare);
                 break;
             case 5:
-                canMakeOperation = this.isGreaterEqual(comparator.get(0), toCompare);
+                result = this.getGreaterEqualIndex(comparator.get(0), toCompare);
                 break;
             case 6:
-                canMakeOperation = this.isSmallerEqual(comparator.get(0), toCompare);
+                result = this.getSmallerEqualIndex(comparator.get(0), toCompare);
                 break;
             case 7:
-                canMakeOperation = this.isInRank(comparator, toCompare);
+                result = this.getInRankIndex(comparator, toCompare);
                 break;
             default:
-                canMakeOperation = false;
+                result = null;
                 break;
         }
-        return canMakeOperation;
+        return result;
     }
 
-    protected Boolean isEqual(T comparator, T toCompare){
-        return comparator.equals(toCompare);
+    private LinkedList<Integer> getEqualIndex(T comparator, TreeMap<T, LinkedList<Integer>> toCompare){
+        return toCompare.get(comparator);
     }
 
-    protected Boolean isDifferent(T comparator, T toCompare){
-        return !comparator.equals(toCompare);
+    private LinkedList<Integer> getDifferentIndex(T comparator, TreeMap<T, LinkedList<Integer>> toCompare){
+        SortedMap<T,LinkedList<Integer>> less = toCompare.headMap(comparator);
+        SortedMap<T,LinkedList<Integer>> greatest = toCompare.tailMap(comparator,false);
+        LinkedList<Integer> result = new LinkedList<>();
+        Collection<LinkedList<Integer>> l1 = greatest.values();
+        Collection<LinkedList<Integer>> l2 = less.values();
+        for(LinkedList<Integer> li : l1){
+            result.addAll(li);
+        }
+        for(LinkedList<Integer> li : l2){
+            result.addAll(li);
+        }
+        return result;
     }
 
-    abstract protected Boolean isGreater(T comparator, T toCompare);
+    private LinkedList<Integer> getGreaterIndex(T comparator, TreeMap<T, LinkedList<Integer>> toCompare){
+        SortedMap<T,LinkedList<Integer>> greatest = toCompare.tailMap(comparator,false);
+        Collection<LinkedList<Integer>> l1 = greatest.values();
+        LinkedList<Integer> result = new LinkedList<>();
+        for(LinkedList<Integer> li : l1){
+            result.addAll(li);
+        }
+        return result;
+    }
 
-    abstract protected Boolean isSmaller(T comparator, T toCompare);
+    private LinkedList<Integer> getSmallerIndex(T comparator, TreeMap<T, LinkedList<Integer>> toCompare){
+        SortedMap<T,LinkedList<Integer>> greatest = toCompare.headMap(comparator,false);
+        Collection<LinkedList<Integer>> l1 = greatest.values();
+        LinkedList<Integer> result = new LinkedList<>();
+        for(LinkedList<Integer> li : l1){
+            result.addAll(li);
+        }
+        return result;
+    }
 
-    abstract protected Boolean isGreaterEqual(T comparator, T toCompare);
+    private LinkedList<Integer> getGreaterEqualIndex(T comparator, TreeMap<T, LinkedList<Integer>> toCompare){
+        LinkedList<Integer> result = this.getGreaterIndex(comparator,toCompare);
+        result.addAll(this.getEqualIndex(comparator,toCompare));
+        return result;
+    }
 
-    abstract protected Boolean isSmallerEqual(T comparator, T toCompare);
+    private LinkedList<Integer> getSmallerEqualIndex(T comparator, TreeMap<T, LinkedList<Integer>> toCompare){
+        LinkedList<Integer> result = this.getSmallerIndex(comparator,toCompare);
+        result.addAll(this.getEqualIndex(comparator,toCompare));
+        return result;
 
-    abstract protected Boolean isInRank(List<T> comparator, T toCompare);
+    }
 
+    private LinkedList<Integer> getInRankIndex(List<T> comparator, TreeMap<T, LinkedList<Integer>> toCompare){
+        SortedMap<T,LinkedList<Integer>> rank = toCompare.subMap(comparator.get(0),true,
+                                                                     comparator.get(1),true);
+        Collection<LinkedList<Integer>> l1 = rank.values();
+        LinkedList<Integer> result = new LinkedList<>();
+        for(LinkedList<Integer> li : l1){
+            result.addAll(li);
+        }
+        return result;
+    }
 }

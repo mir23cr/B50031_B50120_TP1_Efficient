@@ -17,10 +17,7 @@ import filter.*;
 import parser.*;
 import validation.ValidationService;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by vladimir.aguilar on 24/3/2017 .
@@ -46,6 +43,7 @@ public class QueryExecutor {
         String[] rowData;
         QueryResult result = null;
         List parameters;
+        LinkedList<Integer> indexResult;
         this.setFilterParser(fileLoader.getColumnsTypes().get(columnToFilter));
         if(correctParams){
             parameters = new LinkedList();
@@ -53,23 +51,16 @@ public class QueryExecutor {
             for(String s : queryParameters.getParameters()){
                 parameters.add(parser.parse(s));
             }
-            fileLoader.restartCurrent();
-            rowData = fileLoader.getRow();
-            while (rowData!=null){
-                correct = filter.makeSingleOperation(queryParameters.getOperation(),
-                        parameters,this.parser.parse(rowData[columnToFilter]));
-                if(correct){
-                    result.addRow(rowData);
-                }
-                rowData = fileLoader.getRow();
+            indexResult = filter.makeSingleOperation(queryParameters.getOperation(),parameters,
+                          this.fileLoader.getSortedData().get(columnToFilter));
+            for(Integer i : indexResult){
+                result.addRow(fileLoader.getAllData().get(i));
             }
-        }else{
-            System.out.println("AQUI MAMAMOS");
         }
         return result;
     }
 
-    public QueryResult getCompoundQuery(List<QueryParameters> queryParameters, int logicalOp){
+    /*public QueryResult getCompoundQuery(List<QueryParameters> queryParameters, int logicalOp){
         int columnToFilter;
         boolean correctParams;
         boolean correct;
@@ -147,7 +138,8 @@ public class QueryExecutor {
         }
 
         return result;
-    }
+    }*/
+
 
     private boolean isParameterDataType(String dataType, List<String> parameters){
         boolean result = true;
@@ -195,23 +187,23 @@ public class QueryExecutor {
     private void setFilterParser(String dataType){
         switch (dataType){
             case "String":
-                filter = new StringFilter();
+                filter = new FilteringOperation<String>();
                 parser = new StringParser();
                 break;
             case "int":
-                filter = new IntegerFilter();
+                filter = new FilteringOperation<Integer>();
                 parser = new IntegerParser();
                 break;
             case "double":
-                filter = new DoubleFilter();
+                filter = new FilteringOperation<Double>();
                 parser = new DoubleParser();
                 break;
             case "date":
-                filter = new DateFilter();
+                filter = new FilteringOperation<Date>();
                 parser = new DateParser();
                 break;
             case "boolean":
-                filter = new BoolFilter();
+                filter = new FilteringOperation<Boolean>();
                 parser = new BooleanParser();
                 break;
             default:

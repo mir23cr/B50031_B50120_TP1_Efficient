@@ -13,9 +13,8 @@ public class DateParser extends Parser<Date> {
     @Override
     public Date parse(String data) {
         try {
-            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-            Date result =  df.parse(data);
-            return result;
+            DateFormat df = new SimpleDateFormat("mm/dd/yyyy");
+            return df.parse(data);
         } catch (ParseException e) {
             e.printStackTrace();
             return null;

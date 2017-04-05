@@ -20,7 +20,7 @@ public class FileLoader {
     private ArrayList<String> columnsNames;
     private BufferedReader currentLine;
     private ArrayList<String[]> allData;
-    private ArrayList<NavigableMap<Object,LinkedList<Integer>>> sortedData;
+    private ArrayList<TreeMap<Object,LinkedList<Integer>>> sortedData;
     private List<Parser> parsers;
 
     public FileLoader(String address) throws IOException {
@@ -35,11 +35,11 @@ public class FileLoader {
             BufferedReader read = new BufferedReader(new FileReader(address));
             String line = read.readLine();
             String line2 = read.readLine();
-            NavigableMap<Object,LinkedList<Integer>> currentMap;
+            TreeMap<Object,LinkedList<Integer>> currentMap;
             LinkedList<Integer> newList;
             LinkedList<Integer> currentList;
             int rowIndex;
-            Pair<NavigableMap<Object,LinkedList<Integer>>,Parser> p;
+            Pair<TreeMap<Object,LinkedList<Integer>>,Parser> p;
 
 
             values = line.split("\\s*,\\s*");
@@ -54,12 +54,14 @@ public class FileLoader {
                 parsers.add(p.getValue());
             }
 
+            System.out.println("Charging data...");
+
             this.currentLine = read;
             values = this.getRow();
             rowIndex = 0;
             while(values != null){
                 allData.add(values);
-
+               // System.out.println(rowIndex);
                 for(int i =0; i < values.length; i++){
                     currentMap = this.sortedData.get(i);
                     this.getParsedValue(i,values[i]);
@@ -74,8 +76,9 @@ public class FileLoader {
                 rowIndex++;
                 values = this.getRow();
             }
+            System.out.println("Complete");
 
-            Iterator<Map.Entry<Object, LinkedList<Integer>>> iter;
+            /*Iterator<Map.Entry<Object, LinkedList<Integer>>> iter;
             Map.Entry<Object, LinkedList<Integer>> entry;
             for(Map m : this.sortedData){
                 iter = m.entrySet().iterator();
@@ -87,7 +90,7 @@ public class FileLoader {
                     }
                     System.out.println();
                 }
-            }
+            }*/
 
 
             /*for(String[] s : allData){
@@ -97,6 +100,7 @@ public class FileLoader {
                 System.out.println();
             }*/
         }catch (IOException e){
+            System.out.print("HOLITAS");
             e.printStackTrace();
         }
     }
@@ -126,10 +130,10 @@ public class FileLoader {
         }
     }
 
-    public Pair<NavigableMap<Object,LinkedList<Integer>>,Parser> getMapColumn(String typeColumn){
-        NavigableMap newMap = null;
+    public Pair<TreeMap<Object,LinkedList<Integer>>,Parser> getMapColumn(String typeColumn){
+        TreeMap newMap = null;
         Parser p = null;
-        Pair<NavigableMap<Object,LinkedList<Integer>>,Parser> pair;
+        Pair<TreeMap<Object,LinkedList<Integer>>,Parser> pair;
         switch (typeColumn){
             case "String":
                 newMap = new TreeMap<String,LinkedList<Integer>>();
@@ -158,6 +162,22 @@ public class FileLoader {
 
     public Object getParsedValue(int index, String value){
         return parsers.get(index).parse(value);
+    }
+
+    public ArrayList<String[]> getAllData() {
+        return allData;
+    }
+
+    public void setAllData(ArrayList<String[]> allData) {
+        this.allData = allData;
+    }
+
+    public ArrayList<TreeMap<Object, LinkedList<Integer>>> getSortedData() {
+        return sortedData;
+    }
+
+    public void setSortedData(ArrayList<TreeMap<Object, LinkedList<Integer>>> sortedData) {
+        this.sortedData = sortedData;
     }
 
     public String getAddress() {

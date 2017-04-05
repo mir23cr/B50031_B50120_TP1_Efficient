@@ -103,7 +103,8 @@ public class Menu {
                         qPList = new LinkedList<>();
                         qPList.add(qP);
                         qPList.add(qP2);
-                        qR = qE.getCompoundQuery(qPList, logicalOperation);
+                        //qR = qE.getCompoundQuery(qPList, logicalOperation);
+                        qR=null;
                         if (qR != null) {
                             System.out.println("Result: ");
                             qR.print();

@@ -12,20 +12,16 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        FileLoader fl = new FileLoader(System.getProperty("user.dir")+"/aes-2015-csv.csv");
-        /*List<String> list = new LinkedList<>(); //List of the comparator of the first QueryParameters
-        list.add("22");
-        QueryParameters qP = new QueryParameters(4,1,list);
-        List<String> list2 = new LinkedList<>();//List of the comparator of the second QueryParameters
-        list2.add("1.60");
-        QueryParameters qP2 = new QueryParameters(6,5,list2);
-        List<QueryParameters> lp = new LinkedList<>();
-        lp.add(qP);
-        lp.add(qP2);
+        FileLoader fl = new FileLoader(System.getProperty("user.dir")+"/PADRON.csv");
+
+        List<String> list = new LinkedList<>(); //List of the comparator of the first QueryParameters
+        list.add("601097");
+        list.add("601107");
+        QueryParameters qP = new QueryParameters(2,7,list);
 
         QueryExecutor qE = new QueryExecutor(fl);
-        QueryResult qR = qE.getCompoundQuery(lp,2);
-        qR.print();*/
+        QueryResult qR = qE.getSingleQuery(qP);
+        qR.print();
 
         //lp.add(qP3);
         //QueryResult qR /*= q.getSingleQuery(qP)*/;
