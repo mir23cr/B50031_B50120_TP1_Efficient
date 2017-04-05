@@ -10,7 +10,7 @@ public class ValidationService {
     private Matcher matcher;
 
     public Boolean isString(String data){
-        String regex = "^([a-z]|[A-Z]|\\s)*$";
+        String regex = "^([a-z]|[A-Z]|[0-9]|\\ |\\s)*$";
         pattern = Pattern.compile(regex);
         matcher = pattern.matcher(data);
         return matcher.find();

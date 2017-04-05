@@ -11,6 +11,8 @@
 * */
 package filter;
 
+import query.QueryParameters;
+
 import java.util.*;
 
 public class FilteringOperation <T>{
@@ -107,4 +109,13 @@ public class FilteringOperation <T>{
         }
         return result;
     }
+/*
+    private LinkedList<Integer> getAnd(List<QueryParameters> queriesParameters, List<TreeMap<Object,LinkedList<Integer>>> toCompare){
+        QueryParameters qp = queriesParameters.get(0);
+        LinkedList<Integer> prevResult1 = this.makeSingleOperation(qp.getOperation(), (List<T>) qp.getParameters(),
+                toCompare.get(0));
+        LinkedList<Integer> result = new LinkedList<>();
+        return result;
+    }
+*/
 }

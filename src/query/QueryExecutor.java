@@ -48,32 +48,31 @@ public class QueryExecutor {
         if(correctParams){
             parameters = new LinkedList();
             result = new QueryResult();
-            for(String s : queryParameters.getParameters()){
-                parameters.add(parser.parse(s));
+            for(Object s : queryParameters.getParameters()){
+                parameters.add(parser.parse((String)s));
             }
             indexResult = filter.makeSingleOperation(queryParameters.getOperation(),parameters,
                           this.fileLoader.getSortedData().get(columnToFilter));
-            for(Integer i : indexResult){
-                result.addRow(fileLoader.getAllData().get(i));
-            }
+            this.fillResult(indexResult,result);
         }
         return result;
     }
 
-    /*public QueryResult getCompoundQuery(List<QueryParameters> queryParameters, int logicalOp){
+    public QueryResult getCompoundQuery(List<QueryParameters> queryParameters, int logicalOp){
         int columnToFilter;
         boolean correctParams;
-        boolean correct;
-        String[] rowData;
         QueryResult result = null;
         List parameters;
         QueryParameters queryParameter;
         Iterator<QueryParameters> itParams = queryParameters.iterator();
+        LinkedList<Integer> result1;
+        LinkedList<Integer> result2;
+        LinkedList<Integer> indexResult = new LinkedList<>();
 
         Iterator<Parser> itParser;
         Iterator<FilteringOperation> itFilters;
-        filters = new LinkedList<>();
-        parsers = new LinkedList<>();
+        filters = new ArrayList<>();
+        parsers = new ArrayList<>();
         do{
             queryParameter = itParams.next();
             columnToFilter = queryParameter.getColumn()-1;
@@ -85,61 +84,54 @@ public class QueryExecutor {
             if(correctParams){
                 parameters = new LinkedList();
                 result = new QueryResult();
-                for(String s : queryParameter.getParameters()){
-                    parameters.add(parser.parse(s));
+                for(Object s : queryParameter.getParameters()){
+                    parameters.add(parser.parse((String) s));
                 }
                 queryParameter.setParameters(parameters);
             }
         }while(itParams.hasNext() && correctParams);
 
         if(correctParams){
-            fileLoader.restartCurrent();
-            rowData = fileLoader.getRow();
             result = new QueryResult();
+            queryParameter = queryParameters.get(0);
+            result1 = this.filters.get(0).makeSingleOperation(queryParameter.getOperation(),
+                    queryParameter.getParameters(),fileLoader.getSortedData().get(queryParameter.getColumn()-1));
+            queryParameter = queryParameters.get(1);
+            result2 = this.filters.get(1).makeSingleOperation(queryParameter.getOperation(),
+                    queryParameter.getParameters(),fileLoader.getSortedData().get(queryParameter.getColumn()-1));
             switch(logicalOp){
                 case 1:
-                    while(rowData != null){
-                        correct = true;
-                        itParams = queryParameters.iterator();
-                        itFilters = filters.iterator();
-                        itParser = parsers.iterator();
-                        while (correct && itParams.hasNext()){
-                            queryParameter = itParams.next();
-                            columnToFilter = queryParameter.getColumn()-1;
-                            filter = itFilters.next();
-                            parser = itParser.next();
-                            correct = correct && filter.makeSingleOperation(queryParameter.getOperation(),
-                                    queryParameter.getParameters(),this.parser.parse(rowData[columnToFilter]));
+                    if(result2!=null && result1!=null){
+                        for(Integer i : result1){
+                            if(result2.contains(i)){
+                                indexResult.add(i);
+                            }
                         }
-                        if(correct){
-                            result.addRow(rowData);
-                        }
-                        rowData = fileLoader.getRow();
                     }
                     break;
                 case 2:
-                    while(rowData != null){
-                        correct = false;
-                        itParams = queryParameters.iterator();
-                        while (!correct && itParams.hasNext()){
-                            queryParameter = itParams.next();
-                            columnToFilter = queryParameter.getColumn()-1;
-                            this.setFilterParser(fileLoader.getColumnsTypes().get(columnToFilter));
-                            correct = correct || filter.makeSingleOperation(queryParameter.getOperation(),
-                                    queryParameter.getParameters(),this.parser.parse(rowData[columnToFilter]));
+                    indexResult = result1;
+                    if(result1 != null && result2 != null){
+                        for (Integer i : result2){
+                            if(!indexResult.contains(i)){
+                                indexResult.add(i);
+                            }
                         }
-                        if(correct){
-                            result.addRow(rowData);
-                        }
-                        rowData = fileLoader.getRow();
                     }
                     break;
             }
+            this.fillResult(indexResult,result);
         }
-
         return result;
-    }*/
+    }
 
+    private void fillResult(LinkedList<Integer> indexResult, QueryResult result){
+        if(indexResult!=null){
+            for(Integer i : indexResult){
+                result.addRow(fileLoader.getAllData().get(i));
+            }
+        }
+    }
 
     private boolean isParameterDataType(String dataType, List<String> parameters){
         boolean result = true;

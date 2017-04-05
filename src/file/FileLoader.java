@@ -23,7 +23,11 @@ public class FileLoader {
     private ArrayList<TreeMap<Object,LinkedList<Integer>>> sortedData;
     private List<Parser> parsers;
 
-    public FileLoader(String address) throws IOException {
+    public FileLoader() throws IOException {
+
+    }
+
+    public boolean init(String address){
         try{
             String[] values;
             this.address = address;
@@ -33,86 +37,59 @@ public class FileLoader {
             this.sortedData = new ArrayList<>();
             this.parsers = new ArrayList<>();
             BufferedReader read = new BufferedReader(new FileReader(address));
-            String line = read.readLine();
-            String line2 = read.readLine();
-            TreeMap<Object,LinkedList<Integer>> currentMap;
-            LinkedList<Integer> newList;
-            LinkedList<Integer> currentList;
-            int rowIndex;
-            Pair<TreeMap<Object,LinkedList<Integer>>,Parser> p;
+            if(read.ready()){
+                String line = read.readLine();
+                String line2 = read.readLine();
+                TreeMap<Object,LinkedList<Integer>> currentMap;
+                LinkedList<Integer> newList;
+                int rowIndex;
+                Pair<TreeMap<Object,LinkedList<Integer>>,Parser> p;
 
 
-            values = line.split("\\s*,\\s*");
-            columnsNames.addAll(Arrays.asList(values));
+                values = line.split("\\s*,\\s*");
+                columnsNames.addAll(Arrays.asList(values));
 
-            values = line2.split("\\s*,\\s*");
-            columnsTypes.addAll(Arrays.asList(values));
+                values = line2.split("\\s*,\\s*");
+                columnsTypes.addAll(Arrays.asList(values));
 
-            for(String type : columnsTypes){
-                p = this.getMapColumn(type);
-                sortedData.add(p.getKey());
-                parsers.add(p.getValue());
-            }
-
-            System.out.println("Charging data...");
-
-            this.currentLine = read;
-            values = this.getRow();
-            rowIndex = 0;
-            while(values != null){
-                allData.add(values);
-               // System.out.println(rowIndex);
-                for(int i =0; i < values.length; i++){
-                    currentMap = this.sortedData.get(i);
-                    this.getParsedValue(i,values[i]);
-                    if(!currentMap.containsKey(parsers.get(i).parse(values[i]))){
-                        newList = new LinkedList<Integer>();
-                        newList.add(rowIndex);
-                        currentMap.put(this.getParsedValue(i,values[i]),newList);
-                    }else{
-                        currentMap.get(this.getParsedValue(i,values[i])).add(rowIndex);
-                    }
+                for(String type : columnsTypes){
+                    p = this.getMapColumn(type);
+                    sortedData.add(p.getKey());
+                    parsers.add(p.getValue());
                 }
-                rowIndex++;
+
+                System.out.println("Charging data...");
+
+                this.currentLine = read;
                 values = this.getRow();
-            }
-            System.out.println("Complete");
-
-            /*Iterator<Map.Entry<Object, LinkedList<Integer>>> iter;
-            Map.Entry<Object, LinkedList<Integer>> entry;
-            for(Map m : this.sortedData){
-                iter = m.entrySet().iterator();
-                while (iter.hasNext()) {
-                    entry = iter.next();
-                    System.out.print(entry.getKey().toString() + " ");
-                    for(Integer l : entry.getValue()){
-                        System.out.print(l + " ");
+                rowIndex = 0;
+                while(values != null){
+                    allData.add(values);
+                    for(int i =0; i < values.length; i++){
+                        currentMap = this.sortedData.get(i);
+                        this.getParsedValue(i,values[i]);
+                        if(!currentMap.containsKey(parsers.get(i).parse(values[i]))){
+                            newList = new LinkedList<Integer>();
+                            newList.add(rowIndex);
+                            currentMap.put(this.getParsedValue(i,values[i]),newList);
+                        }else{
+                            currentMap.get(this.getParsedValue(i,values[i])).add(rowIndex);
+                        }
                     }
-                    System.out.println();
+                    rowIndex++;
+                    values = this.getRow();
                 }
-            }*/
+                System.out.println("Complete");
+                return true;
 
+            }else {
+                System.out.println("Bad path of directory.");
+                return false;
+            }
 
-            /*for(String[] s : allData){
-                for(String s2 : s){
-                    System.out.print(s2 + " ");
-                }
-                System.out.println();
-            }*/
         }catch (IOException e){
-            System.out.print("HOLITAS");
-            e.printStackTrace();
-        }
-    }
-
-    public void restartCurrent(){
-        try {
-            this.currentLine.close();
-            this.currentLine = new BufferedReader(new FileReader(this.address));
-            this.currentLine.readLine();
-            this.currentLine.readLine();
-        } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Bad path of directory.");
+            return false;
         }
     }
 

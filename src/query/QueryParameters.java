@@ -32,7 +32,7 @@ public class QueryParameters {
         this.operation = operation;
     }
 
-    public List<String> getParameters() {
+    public List getParameters() {
         return parameters;
     }
 
