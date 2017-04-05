@@ -25,17 +25,25 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Created by vladimir.aguilar on 24/3/2017 .
+ * Class that contains the console management of the application
+ * @author Vladimir Aguilar
+ * @author Mariana Abellan
+ * Creation Date: 24/3/2017
  */
 public class Menu {
 
     private FileLoader fl;
     private Scanner consoleNumbers;
     private Scanner consoleStrings;
+
     public Menu() throws IOException {
         this.runMenu();
     }
-    public void runMenu() throws IOException {
+
+    /**
+     * Runs the cycle that maintain the logic of the menu during execution
+     * */
+    private void runMenu() throws IOException {
         consoleNumbers = new Scanner(System.in);
         consoleStrings = new Scanner(System.in);
         System.out.println("Insert the location of the file: ");
@@ -127,6 +135,13 @@ public class Menu {
             }
         }
     }
+
+    /**
+     * Set the parameters for one query
+     * @param columnSelection int
+     * @param  operation int
+     * @return QueryParameters
+     * */
     private QueryParameters getQueryParameters(int columnSelection, int operation) throws IOException {
         List<String> parameters = new LinkedList<>();
         if(operation > 0 && operation < 7) {
@@ -148,6 +163,12 @@ public class Menu {
             return null;
         }
     }
+
+    /**
+     * Set the user selection for the operation that want to do
+     * @param columSelection int
+     * @int
+     * */
     private int getOperationSelection(int columSelection) throws IOException {
         int op;
         String typeColumn = fl.getColumnsTypes().get(columSelection-1);
@@ -173,6 +194,12 @@ public class Menu {
         }
         return op;
     }
+
+    /**
+     * Get the column which the user wants to filter
+     * @param columnsNames Arraylist<String>
+     * @return  int
+     * */
     private int getColumnSelection(ArrayList<String> columnsNames) throws IOException {
         int index;
         System.out.println("Select the column you want to search:");

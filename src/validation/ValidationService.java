@@ -3,7 +3,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by Vladimir Aguilar on 24/3/2017 .
+ *
+ * @author Vladimir Aguilar
+ * @author Mariana Abellan
+ * Creation Date: 24/3/2017
  */
 public class ValidationService {
     private Pattern pattern;

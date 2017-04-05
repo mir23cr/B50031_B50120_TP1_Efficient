@@ -1,15 +1,19 @@
 package parser;
 
 /**
- * Created by Vladimir Aguilar on 28/3/2017.
+ * Class that parse the boolean
+ * @author Vladimir Aguilar
+ * @author Mariana Abellan
+ * {28/3/2017}
  */
-public class BooleanParser extends Parser<Boolean>{
+public class BooleanParser extends Parser<Boolean> {
+    /**
+     * Return the parsed data
+     * @param  data String
+     * @return Boolean
+     * */
     @Override
     public Boolean parse(String data) {
-        if(data.equals("true")){
-            return true;
-        }else{
-            return false;
-        }
+        return data.equals("true");
     }
 }

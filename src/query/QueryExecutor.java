@@ -13,28 +13,33 @@
 package query;
 
 import file.FileLoader;
-import filter.*;
 import parser.*;
 import validation.ValidationService;
 
 import java.util.*;
 
 /**
- * Created by vladimir.aguilar on 24/3/2017 .
+ * Class that executes the queries
+ * @author Vladimir Aguilar
+ * @author Mariana Abellan
+ * Creation Date: 24/3/2017
  */
 public class QueryExecutor {
     private FileLoader fileLoader;
     private ValidationService validation;
-    private FilteringOperation filter;
+    private SingleOperation singleOperation;
     private Parser parser;
-    private List<Parser> parsers;
-    private List<FilteringOperation> filters;
 
     public QueryExecutor(FileLoader fileLoader) {
         this.fileLoader = fileLoader;
         this.validation = new ValidationService();
     }
 
+    /**
+     * Returns the results of a Single Query
+     * @param queryParameters QueryParameters
+     * @return QueryResult
+     * */
     public QueryResult getSingleQuery(QueryParameters queryParameters){
         int columnToFilter = queryParameters.getColumn()-1;
         boolean correctParams = this.isParameterDataType(fileLoader.getColumnsTypes().get(columnToFilter),
@@ -44,20 +49,26 @@ public class QueryExecutor {
         QueryResult result = null;
         List parameters;
         LinkedList<Integer> indexResult;
-        this.setFilterParser(fileLoader.getColumnsTypes().get(columnToFilter));
+        this.setSingleOpParser(fileLoader.getColumnsTypes().get(columnToFilter));
         if(correctParams){
             parameters = new LinkedList();
             result = new QueryResult();
             for(Object s : queryParameters.getParameters()){
                 parameters.add(parser.parse((String)s));
             }
-            indexResult = filter.makeSingleOperation(queryParameters.getOperation(),parameters,
+            indexResult = singleOperation.makeSingleOperation(queryParameters.getOperation(),parameters,
                           this.fileLoader.getSortedData().get(columnToFilter));
             this.fillResult(indexResult,result);
         }
         return result;
     }
 
+    /**
+     * Returns the results of a compound Query
+     * @param queryParameters List<QueryParameters>
+     * @param logicalOp int
+     * @return QueryResult
+     * */
     public QueryResult getCompoundQuery(List<QueryParameters> queryParameters, int logicalOp){
         int columnToFilter;
         boolean correctParams;
@@ -70,16 +81,16 @@ public class QueryExecutor {
         LinkedList<Integer> indexResult = new LinkedList<>();
 
         Iterator<Parser> itParser;
-        Iterator<FilteringOperation> itFilters;
-        filters = new ArrayList<>();
-        parsers = new ArrayList<>();
+        Iterator<SingleOperation> itFilters;
+        List<SingleOperation> filters = new ArrayList<>();
+        List<Parser> parsers = new ArrayList<>();
         do{
             queryParameter = itParams.next();
             columnToFilter = queryParameter.getColumn()-1;
             correctParams = this.isParameterDataType(fileLoader.getColumnsTypes().get(columnToFilter),
                     queryParameter.getParameters());
-            this.setFilterParser(fileLoader.getColumnsTypes().get(columnToFilter));
-            filters.add(this.filter);
+            this.setSingleOpParser(fileLoader.getColumnsTypes().get(columnToFilter));
+            filters.add(this.singleOperation);
             parsers.add(this.parser);
             if(correctParams){
                 parameters = new LinkedList();
@@ -94,10 +105,10 @@ public class QueryExecutor {
         if(correctParams){
             result = new QueryResult();
             queryParameter = queryParameters.get(0);
-            result1 = this.filters.get(0).makeSingleOperation(queryParameter.getOperation(),
+            result1 = filters.get(0).makeSingleOperation(queryParameter.getOperation(),
                     queryParameter.getParameters(),fileLoader.getSortedData().get(queryParameter.getColumn()-1));
             queryParameter = queryParameters.get(1);
-            result2 = this.filters.get(1).makeSingleOperation(queryParameter.getOperation(),
+            result2 = filters.get(1).makeSingleOperation(queryParameter.getOperation(),
                     queryParameter.getParameters(),fileLoader.getSortedData().get(queryParameter.getColumn()-1));
             switch(logicalOp){
                 case 1:
@@ -125,6 +136,11 @@ public class QueryExecutor {
         return result;
     }
 
+    /**
+     * Fill the result parameter
+     * @param indexResult LinkedList<Integer>
+     * @param result QueryResult
+     * */
     private void fillResult(LinkedList<Integer> indexResult, QueryResult result){
         if(indexResult!=null){
             for(Integer i : indexResult){
@@ -133,6 +149,12 @@ public class QueryExecutor {
         }
     }
 
+    /**
+     * Validates that the parameters inserted by the user are right
+     * @param dataType String
+     * @param parameters List<String
+     * @return boolean
+     * */
     private boolean isParameterDataType(String dataType, List<String> parameters){
         boolean result = true;
         Iterator<String> it = parameters.iterator();
@@ -176,30 +198,34 @@ public class QueryExecutor {
         return result;
     }
 
-    private void setFilterParser(String dataType){
+    /**
+     * Set the values for the parser and the type of singleOperation
+     * @param dataType String
+     * */
+    private void setSingleOpParser(String dataType){
         switch (dataType){
             case "String":
-                filter = new FilteringOperation<String>();
+                singleOperation = new SingleOperation<String>();
                 parser = new StringParser();
                 break;
             case "int":
-                filter = new FilteringOperation<Integer>();
+                singleOperation = new SingleOperation<Integer>();
                 parser = new IntegerParser();
                 break;
             case "double":
-                filter = new FilteringOperation<Double>();
+                singleOperation = new SingleOperation<Double>();
                 parser = new DoubleParser();
                 break;
             case "date":
-                filter = new FilteringOperation<Date>();
+                singleOperation = new SingleOperation<Date>();
                 parser = new DateParser();
                 break;
             case "boolean":
-                filter = new FilteringOperation<Boolean>();
+                singleOperation = new SingleOperation<Boolean>();
                 parser = new BooleanParser();
                 break;
             default:
-                filter = null;
+                singleOperation = null;
                 parser = null;
                 break;
         }

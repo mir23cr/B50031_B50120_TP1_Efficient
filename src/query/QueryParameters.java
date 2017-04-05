@@ -3,7 +3,10 @@ package query;
 import java.util.List;
 
 /**
- * Created by vladimir.aguilar on 24/3/2017 .
+ *
+ * @author Vladimir Aguilar
+ * @author Mariana Abellan
+ * Creation Date: 24/3/2017
  */
 public class QueryParameters {
     private int column;

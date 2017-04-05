@@ -6,10 +6,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Vladimir Aguilar on 28/3/2017.
+ * Class that parse the Date
+ * @author Vladimir Aguilar
+ * @author Mariana Abellan
+ * Creation Date: 28/3/2017
  */
 public class DateParser extends Parser<Date> {
 
+    /**
+     * Return the parsed data
+     * @param  data String
+     * @return Date
+     * */
     @Override
     public Date parse(String data) {
         try {

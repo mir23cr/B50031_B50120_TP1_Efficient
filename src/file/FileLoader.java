@@ -3,8 +3,6 @@ package file;
 import javafx.util.Pair;
 import parser.*;
 
-import java.awt.*;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
@@ -12,7 +10,9 @@ import java.io.BufferedReader;
 import java.util.List;
 
 /**
- * Created by vladimir.aguilar on 24/3/2017 .
+ * Class that charge the file in memory and create the list of TreeMaps
+ * @author Vladimir Aguilar
+ * @author Mariana Abellan
  */
 public class FileLoader {
     private String address;
@@ -26,7 +26,12 @@ public class FileLoader {
     public FileLoader() throws IOException {
 
     }
-
+    /**
+     * Charge all the data in the Data Structures
+     * @param address of the .csv file
+     * @return false if the file doesn't exist
+     * @return true if the file it's correct
+     * */
     public boolean init(String address){
         try{
             String[] values;
@@ -53,7 +58,7 @@ public class FileLoader {
                 columnsTypes.addAll(Arrays.asList(values));
 
                 for(String type : columnsTypes){
-                    p = this.getMapColumn(type);
+                    p = this.getMapAndParseColumn(type);
                     sortedData.add(p.getKey());
                     parsers.add(p.getValue());
                 }
@@ -92,8 +97,11 @@ public class FileLoader {
             return false;
         }
     }
-
-    public String[] getRow(){
+    /**
+     * Get the next row of the file
+     * @return an array with the fields of the row
+     * */
+    private String[] getRow(){
         try {
             String line = currentLine.readLine();
             if(line != null){
@@ -107,7 +115,11 @@ public class FileLoader {
         }
     }
 
-    public Pair<TreeMap<Object,LinkedList<Integer>>,Parser> getMapColumn(String typeColumn){
+    /**
+     * Get a Pair with the TreeMap with the correct Parsing and a parser to set data
+     * @return a Pair with the TreeMap with the correct Parsing and a parser to set data
+     * */
+    public Pair<TreeMap<Object,LinkedList<Integer>>,Parser> getMapAndParseColumn(String typeColumn){
         TreeMap newMap = null;
         Parser p = null;
         Pair<TreeMap<Object,LinkedList<Integer>>,Parser> pair;
@@ -137,47 +149,43 @@ public class FileLoader {
         return pair;
     }
 
-    public Object getParsedValue(int index, String value){
+    /**
+     * Get a value parsed
+     * @return a parsed value
+     * */
+    private Object getParsedValue(int index, String value){
         return parsers.get(index).parse(value);
     }
 
+    /**
+     * Return a table with all the data
+     * @return all the data of the .csv file
+     * */
     public ArrayList<String[]> getAllData() {
         return allData;
     }
 
-    public void setAllData(ArrayList<String[]> allData) {
-        this.allData = allData;
-    }
-
+    /**
+     * Return the Arraylist with all the TreeMaps
+     * @return an Arraylist with treeMaps
+     * */
     public ArrayList<TreeMap<Object, LinkedList<Integer>>> getSortedData() {
         return sortedData;
     }
 
-    public void setSortedData(ArrayList<TreeMap<Object, LinkedList<Integer>>> sortedData) {
-        this.sortedData = sortedData;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
+    /**
+     * Get an arrayList with all the columns types of the file
+     * @return ArrayList<String>
+     * */
     public ArrayList<String> getColumnsTypes() {
         return columnsTypes;
     }
 
-    public void setColumnsTypes(ArrayList<String> columnsTypes) {
-        this.columnsTypes = columnsTypes;
-    }
-
+    /**
+     * Get an arrayList with all the columns names of the file
+     * @return ArrayList<String>
+     * */
     public ArrayList<String> getGetColumnsNames() {
         return columnsNames;
-    }
-
-    public void setGetColumnsNames(ArrayList<String> getColumnsNames) {
-        this.columnsNames = columnsNames;
     }
 }
