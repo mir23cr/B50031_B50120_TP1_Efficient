@@ -3,23 +3,17 @@ package query;
 import java.util.ArrayList;
 
 /**
- * Created by vladimir on 28/03/17 .
+ *
+ * @author Vladimir Aguilar
+ * @author Mariana Abellan
+ * Creation Date: 28/03/17
  */
 public class QueryResult {
     private ArrayList<String[]> rows;
 
     public QueryResult() {
-        this.rows = new ArrayList<String[]>();
+        this.rows = new ArrayList<>();
     }
-
-    public ArrayList<String[]> getRows() {
-        return rows;
-    }
-
-    public int getNumberOfResults() {
-        return this.rows.size();
-    }
-
 
     public void addRow(String[] row){
         this.rows.add(row);

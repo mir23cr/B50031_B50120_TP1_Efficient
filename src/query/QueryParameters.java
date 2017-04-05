@@ -23,16 +23,9 @@ public class QueryParameters {
         return column;
     }
 
-    public void setColumn(int column) {
-        this.column = column;
-    }
 
     public int getOperation() {
         return operation;
-    }
-
-    public void setOperation(int operation) {
-        this.operation = operation;
     }
 
     public List getParameters() {
