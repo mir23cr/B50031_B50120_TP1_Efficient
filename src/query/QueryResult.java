@@ -9,18 +9,22 @@ import java.util.ArrayList;
  * Creation Date: 28/03/17
  */
 public class QueryResult {
-    private ArrayList<String[]> rows;
+    private ArrayList<ArrayList<String>> rows;
 
     public QueryResult() {
         this.rows = new ArrayList<>();
     }
 
-    public void addRow(String[] row){
+    public void addRow(ArrayList<String> row){
         this.rows.add(row);
     }
 
+    public void setResult(ArrayList<ArrayList<String>> result){
+        this.rows = result;
+    }
+
     public void print(){
-        for(String[] row : rows){
+        for(ArrayList<String> row : rows){
             for(String s : row){
                 System.out.print(s + " ");
             }

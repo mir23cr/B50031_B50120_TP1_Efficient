@@ -44,11 +44,9 @@ public class QueryExecutor {
         int columnToFilter = queryParameters.getColumn()-1;
         boolean correctParams = this.isParameterDataType(fileLoader.getColumnsTypes().get(columnToFilter),
                                 queryParameters.getParameters());
-        boolean correct;
-        String[] rowData;
         QueryResult result = null;
         List parameters;
-        LinkedList<Integer> indexResult;
+        ArrayList<ArrayList<String>> indexResult;
         this.setSingleOpParser(fileLoader.getColumnsTypes().get(columnToFilter));
         if(correctParams){
             parameters = new LinkedList();
@@ -76,12 +74,10 @@ public class QueryExecutor {
         List parameters;
         QueryParameters queryParameter;
         Iterator<QueryParameters> itParams = queryParameters.iterator();
-        LinkedList<Integer> result1;
-        LinkedList<Integer> result2;
-        LinkedList<Integer> indexResult = new LinkedList<>();
+        ArrayList<ArrayList<String>> result1;
+        ArrayList<ArrayList<String>> result2;
+        ArrayList<ArrayList<String>> indexResult = new ArrayList<>();
 
-        Iterator<Parser> itParser;
-        Iterator<SingleOperation> itFilters;
         List<SingleOperation> filters = new ArrayList<>();
         List<Parser> parsers = new ArrayList<>();
         do{
@@ -113,7 +109,7 @@ public class QueryExecutor {
             switch(logicalOp){
                 case 1:
                     if(result2!=null && result1!=null){
-                        for(Integer i : result1){
+                        for(ArrayList<String> i : result1){
                             if(result2.contains(i)){
                                 indexResult.add(i);
                             }
@@ -123,7 +119,7 @@ public class QueryExecutor {
                 case 2:
                     indexResult = result1;
                     if(result1 != null && result2 != null){
-                        for (Integer i : result2){
+                        for (ArrayList<String> i : result2){
                             if(!indexResult.contains(i)){
                                 indexResult.add(i);
                             }
@@ -138,13 +134,13 @@ public class QueryExecutor {
 
     /**
      * Fill the result parameter
-     * @param indexResult LinkedList<Integer>
+     * @param indexResult ArrayList<ArrayList<String>>
      * @param result QueryResult
      * */
-    private void fillResult(LinkedList<Integer> indexResult, QueryResult result){
+    private void fillResult(ArrayList<ArrayList<String>> indexResult, QueryResult result){
         if(indexResult!=null){
-            for(Integer i : indexResult){
-                result.addRow(fileLoader.getAllData().get(i));
+            for(ArrayList<String> i : indexResult){
+                result.addRow(i);
             }
         }
     }

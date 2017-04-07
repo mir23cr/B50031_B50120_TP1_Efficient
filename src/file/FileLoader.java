@@ -15,12 +15,10 @@ import java.util.List;
  * @author Mariana Abellan
  */
 public class FileLoader {
-    private String address;
     private ArrayList<String> columnsTypes;
     private ArrayList<String> columnsNames;
     private BufferedReader currentLine;
-    private ArrayList<String[]> allData;
-    private ArrayList<TreeMap<Object,LinkedList<Integer>>> sortedData;
+    private ArrayList<TreeMap<Object,ArrayList<ArrayList<String>>>> sortedData;
     private List<Parser> parsers;
 
     public FileLoader() throws IOException {
@@ -35,20 +33,18 @@ public class FileLoader {
     public boolean init(String address){
         try{
             String[] values;
-            this.address = address;
             this.columnsNames = new ArrayList<>();
             this.columnsTypes = new ArrayList<>();
-            this.allData = new ArrayList<>();
             this.sortedData = new ArrayList<>();
             this.parsers = new ArrayList<>();
             BufferedReader read = new BufferedReader(new FileReader(address));
             if(read.ready()){
                 String line = read.readLine();
                 String line2 = read.readLine();
-                TreeMap<Object,LinkedList<Integer>> currentMap;
-                LinkedList<Integer> newList;
-                int rowIndex;
-                Pair<TreeMap<Object,LinkedList<Integer>>,Parser> p;
+                TreeMap<Object,ArrayList<ArrayList<String>>> currentMap;
+                ArrayList<String> row;
+                ArrayList<ArrayList<String>> newList;
+                Pair<TreeMap<Object,ArrayList<ArrayList<String>>>,Parser> p;
 
 
                 values = line.split("\\s*,\\s*");
@@ -67,21 +63,23 @@ public class FileLoader {
 
                 this.currentLine = read;
                 values = this.getRow();
-                rowIndex = 0;
+
                 while(values != null){
-                    allData.add(values);
-                    for(int i =0; i < values.length; i++){
+                    row = new ArrayList<>();
+                    for(String s : values){
+                        row.add(s);
+                    }
+                    for(int i =0; i < row.size(); i++){
                         currentMap = this.sortedData.get(i);
-                        this.getParsedValue(i,values[i]);
-                        if(!currentMap.containsKey(parsers.get(i).parse(values[i]))){
-                            newList = new LinkedList<Integer>();
-                            newList.add(rowIndex);
-                            currentMap.put(this.getParsedValue(i,values[i]),newList);
+                        this.getParsedValue(i,row.get(i));
+                        if(!currentMap.containsKey(parsers.get(i).parse(row.get(i)))){
+                            newList = new ArrayList<>();
+                            newList.add(row);
+                            currentMap.put(this.getParsedValue(i,row.get(i)),newList);
                         }else{
-                            currentMap.get(this.getParsedValue(i,values[i])).add(rowIndex);
+                            currentMap.get(this.getParsedValue(i,row.get(i))).add(row);
                         }
                     }
-                    rowIndex++;
                     values = this.getRow();
                 }
                 System.out.println("Complete");
@@ -119,29 +117,29 @@ public class FileLoader {
      * Get a Pair with the TreeMap with the correct Parsing and a parser to set data
      * @return a Pair with the TreeMap with the correct Parsing and a parser to set data
      * */
-    public Pair<TreeMap<Object,LinkedList<Integer>>,Parser> getMapAndParseColumn(String typeColumn){
+    public Pair<TreeMap<Object,ArrayList<ArrayList<String>>>,Parser> getMapAndParseColumn(String typeColumn){
         TreeMap newMap = null;
         Parser p = null;
-        Pair<TreeMap<Object,LinkedList<Integer>>,Parser> pair;
+        Pair<TreeMap<Object,ArrayList<ArrayList<String>>>,Parser> pair;
         switch (typeColumn){
             case "String":
-                newMap = new TreeMap<String,LinkedList<Integer>>();
+                newMap = new TreeMap<String,ArrayList<ArrayList<String>>>();
                 p = new StringParser();
                 break;
             case "int":
-                newMap = new TreeMap<Integer,LinkedList<Integer>>();
+                newMap = new TreeMap<Integer,ArrayList<ArrayList<String>>>();
                 p = new IntegerParser();
                 break;
             case "double":
-                newMap = new TreeMap<Double,LinkedList<Integer>>();
+                newMap = new TreeMap<Double,ArrayList<ArrayList<String>>>();
                 p = new DoubleParser();
                 break;
             case "date":
-                newMap = new TreeMap<Date,LinkedList<Integer>>();
+                newMap = new TreeMap<Date,ArrayList<ArrayList<String>>>();
                 p = new DateParser();
                 break;
             case "boolean":
-                newMap = new TreeMap<Boolean,LinkedList<Integer>>();
+                newMap = new TreeMap<Boolean,ArrayList<ArrayList<String>>>();
                 p = new BooleanParser();
                 break;
         }
@@ -157,19 +155,12 @@ public class FileLoader {
         return parsers.get(index).parse(value);
     }
 
-    /**
-     * Return a table with all the data
-     * @return all the data of the .csv file
-     * */
-    public ArrayList<String[]> getAllData() {
-        return allData;
-    }
 
     /**
      * Return the Arraylist with all the TreeMaps
      * @return an Arraylist with treeMaps
      * */
-    public ArrayList<TreeMap<Object, LinkedList<Integer>>> getSortedData() {
+    public ArrayList<TreeMap<Object, ArrayList<ArrayList<String>>>> getSortedData() {
         return sortedData;
     }
 

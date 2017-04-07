@@ -20,7 +20,7 @@ import query.QueryResult;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -111,7 +111,7 @@ public class Menu {
                                     if(operation3 >= 1 && operation3 <=7){
                                         qP2 = getQueryParameters(columnSelection2, operation3);
                                         if (qP != null && qP2 != null) {
-                                            qPList = new LinkedList<>();
+                                            qPList = new ArrayList<>();
                                             qPList.add(qP);
                                             qPList.add(qP2);
                                             qR = qE.getCompoundQuery(qPList, logicalOperation);
@@ -143,7 +143,7 @@ public class Menu {
      * @return QueryParameters
      * */
     private QueryParameters getQueryParameters(int columnSelection, int operation) throws IOException {
-        List<String> parameters = new LinkedList<>();
+        List<String> parameters = new ArrayList<>();
         if(operation > 0 && operation < 7) {
             System.out.println("Which is the value you want to compare");
             String compare = consoleStrings.nextLine();

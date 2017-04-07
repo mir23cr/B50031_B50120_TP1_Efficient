@@ -25,10 +25,12 @@ public class SingleOperation<T>{
      * @param opID int
      * @param comparator List<T> The params that the user inserts
      * @param toCompare TreeMap Contains the elements that we want to match
-     * @return LinkedList<Integer>
+     * @return ArrayList<ArrayList<String>>
      * */
-    public LinkedList<Integer> makeSingleOperation(int opID, List<T> comparator, TreeMap<T,LinkedList<Integer>> toCompare){
-        LinkedList<Integer> result;
+    public ArrayList<ArrayList<String>> makeSingleOperation(int opID, List<T> comparator, TreeMap<T,
+            ArrayList<ArrayList<String>>> toCompare){
+
+        ArrayList<ArrayList<String>> result;
         switch (opID){
             case 1:
                 result = this.getEqualIndex(comparator.get(0), toCompare);
@@ -62,9 +64,9 @@ public class SingleOperation<T>{
      * Makes the indexes that match with the equal operation
      * @param comparator
      * @param toCompare
-     * @return LinkedList<Integer>
+     * @return ArrayList<ArrayList<String>>
      * */
-    private LinkedList<Integer> getEqualIndex(T comparator, TreeMap<T, LinkedList<Integer>> toCompare){
+    private ArrayList<ArrayList<String>> getEqualIndex(T comparator, TreeMap<T, ArrayList<ArrayList<String >>> toCompare){
         return toCompare.get(comparator);
     }
 
@@ -72,18 +74,18 @@ public class SingleOperation<T>{
      * Makes the indexes that match with the different operation
      * @param comparator
      * @param toCompare
-     * @return LinkedList<Integer>
+     * @return ArrayList<ArrayList<String>>
      * */
-    private LinkedList<Integer> getDifferentIndex(T comparator, TreeMap<T, LinkedList<Integer>> toCompare){
-        SortedMap<T,LinkedList<Integer>> less = toCompare.headMap(comparator);
-        SortedMap<T,LinkedList<Integer>> greatest = toCompare.tailMap(comparator,false);
-        LinkedList<Integer> result = new LinkedList<>();
-        Collection<LinkedList<Integer>> l1 = greatest.values();
-        Collection<LinkedList<Integer>> l2 = less.values();
-        for(LinkedList<Integer> li : l1){
+    private ArrayList<ArrayList<String>> getDifferentIndex(T comparator, TreeMap<T, ArrayList<ArrayList<String>>> toCompare){
+        SortedMap<T,ArrayList<ArrayList<String>>> less = toCompare.headMap(comparator);
+        SortedMap<T,ArrayList<ArrayList<String>>> greatest = toCompare.tailMap(comparator,false);
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
+        Collection<ArrayList<ArrayList<String>>> l1 = greatest.values();
+        Collection<ArrayList<ArrayList<String>>> l2 = less.values();
+        for(ArrayList<ArrayList<String>> li : l1){
             result.addAll(li);
         }
-        for(LinkedList<Integer> li : l2){
+        for(ArrayList<ArrayList<String>> li : l2){
             result.addAll(li);
         }
         return result;
@@ -93,13 +95,13 @@ public class SingleOperation<T>{
      * Makes the indexes that match with the greater operation
      * @param comparator
      * @param toCompare
-     * @return LinkedList<Integer>
+     * @return ArrayList<ArrayList<String>>
      * */
-    private LinkedList<Integer> getGreaterIndex(T comparator, TreeMap<T, LinkedList<Integer>> toCompare){
-        SortedMap<T,LinkedList<Integer>> greatest = toCompare.tailMap(comparator,false);
-        Collection<LinkedList<Integer>> l1 = greatest.values();
-        LinkedList<Integer> result = new LinkedList<>();
-        for(LinkedList<Integer> li : l1){
+    private ArrayList<ArrayList<String>> getGreaterIndex(T comparator, TreeMap<T, ArrayList<ArrayList<String>>> toCompare){
+        SortedMap<T,ArrayList<ArrayList<String>>> greatest = toCompare.tailMap(comparator,false);
+        Collection<ArrayList<ArrayList<String>>> l1 = greatest.values();
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
+        for(ArrayList<ArrayList<String>> li : l1){
             result.addAll(li);
         }
         return result;
@@ -109,13 +111,13 @@ public class SingleOperation<T>{
      * Makes the indexes that match with the smaller operation
      * @param comparator
      * @param toCompare
-     * @return LinkedList<Integer>
+     * @return ArrayList<ArrayList<String>>
      * */
-    private LinkedList<Integer> getSmallerIndex(T comparator, TreeMap<T, LinkedList<Integer>> toCompare){
-        SortedMap<T,LinkedList<Integer>> greatest = toCompare.headMap(comparator,false);
-        Collection<LinkedList<Integer>> l1 = greatest.values();
-        LinkedList<Integer> result = new LinkedList<>();
-        for(LinkedList<Integer> li : l1){
+    private ArrayList<ArrayList<String>> getSmallerIndex(T comparator, TreeMap<T, ArrayList<ArrayList<String>>> toCompare){
+        SortedMap<T,ArrayList<ArrayList<String>>> greatest = toCompare.headMap(comparator,false);
+        Collection<ArrayList<ArrayList<String>>> l1 = greatest.values();
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
+        for(ArrayList<ArrayList<String>> li : l1){
             result.addAll(li);
         }
         return result;
@@ -125,10 +127,11 @@ public class SingleOperation<T>{
      * Makes the indexes that match with the greater or equal operation
      * @param comparator
      * @param toCompare
-     * @return LinkedList<Integer>
+     * @return ArrayList<ArrayList<String>>
      * */
-    private LinkedList<Integer> getGreaterEqualIndex(T comparator, TreeMap<T, LinkedList<Integer>> toCompare){
-        LinkedList<Integer> result = this.getGreaterIndex(comparator,toCompare);
+    private ArrayList<ArrayList<String>> getGreaterEqualIndex(T comparator,
+                                          TreeMap<T, ArrayList<ArrayList<String>>> toCompare){
+        ArrayList<ArrayList<String>> result = this.getGreaterIndex(comparator,toCompare);
         result.addAll(this.getEqualIndex(comparator,toCompare));
         return result;
     }
@@ -137,9 +140,11 @@ public class SingleOperation<T>{
      * Makes the indexes that match with the smaller or equal operation
      * @param comparator
      * @param toCompare
-     * @return LinkedList<Integer>
-     * */    private LinkedList<Integer> getSmallerEqualIndex(T comparator, TreeMap<T, LinkedList<Integer>> toCompare){
-        LinkedList<Integer> result = this.getSmallerIndex(comparator,toCompare);
+     * @return ArrayList<ArrayList<String>>
+     * */
+    private ArrayList<ArrayList<String>> getSmallerEqualIndex(T comparator,
+                                                   TreeMap<T, ArrayList<ArrayList<String>>> toCompare){
+        ArrayList<ArrayList<String>> result = this.getSmallerIndex(comparator,toCompare);
         result.addAll(this.getEqualIndex(comparator,toCompare));
         return result;
 
@@ -149,14 +154,15 @@ public class SingleOperation<T>{
      * Makes the indexes that match with the rank operation
      * @param comparator List<T> includes the floor and the top
      * @param toCompare
-     * @return LinkedList<Integer>
+     * @return ArrayList<ArrayList<String>>
      * */
-    private LinkedList<Integer> getInRankIndex(List<T> comparator, TreeMap<T, LinkedList<Integer>> toCompare){
-        SortedMap<T,LinkedList<Integer>> rank = toCompare.subMap(comparator.get(0),true,
+    private ArrayList<ArrayList<String>> getInRankIndex(List<T> comparator,
+                                                         TreeMap<T, ArrayList<ArrayList<String>>> toCompare){
+        SortedMap<T,ArrayList<ArrayList<String>>> rank = toCompare.subMap(comparator.get(0),true,
                                                                      comparator.get(1),true);
-        Collection<LinkedList<Integer>> l1 = rank.values();
-        LinkedList<Integer> result = new LinkedList<>();
-        for(LinkedList<Integer> li : l1){
+        Collection<ArrayList<ArrayList<String>>> l1 = rank.values();
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
+        for(ArrayList<ArrayList<String>> li : l1){
             result.addAll(li);
         }
         return result;
