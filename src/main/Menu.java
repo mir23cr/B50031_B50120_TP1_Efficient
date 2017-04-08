@@ -20,7 +20,6 @@ import query.QueryResult;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -84,8 +83,7 @@ public class Menu {
                         if(qP != null) {
                             qR = qE.getSingleQuery(qP);
                             if (qR != null) {
-                                System.out.println("Result: ");
-                                qR.print();
+                                this.printResult(this.fl.getGetColumnsNames(),qR);
                             } else {
                                 System.out.println("You enter a invalid value.");
                             }
@@ -116,8 +114,7 @@ public class Menu {
                                             qPList.add(qP2);
                                             qR = qE.getCompoundQuery(qPList, logicalOperation);
                                             if (qR != null) {
-                                                System.out.println("Result: ");
-                                                qR.print();
+                                                this.printResult(this.fl.getGetColumnsNames(),qR);
                                             } else {
                                                 System.out.println("Error.");
                                             }
@@ -209,12 +206,43 @@ public class Menu {
             index++;
         }
         System.out.println(index + ") Exit");
-        System.out.println("Option:");
+        System.out.print("Option: ");
         index = consoleNumbers.nextInt();
         if(index > columnsNames.size()){
             index = -1;
         }
         return index;
     }
-
+    /**
+     * Print the result of the query
+     * @param columnsNames the names of the columns in the file
+     * @param qR the result of the query
+     * */
+    public void printResult(ArrayList<String> columnsNames, QueryResult qR){
+        int index;
+        System.out.println("Select the columns you want to print, separated by commas:");
+        index=1;
+        String op;
+        String [] options;
+        ArrayList<Integer> columns;
+        for(String s: columnsNames){
+            System.out.println(index + ") " + s);
+            index++;
+        }
+        System.out.println("*) All Columns");
+        System.out.println("Enter) All Columns");
+        System.out.print("Option: ");
+        op = consoleStrings.nextLine();
+        System.out.println("Result: ");
+        if(op.equals("") || op.equals("*")){
+            qR.printAllColumns();
+        }else{
+            columns = new ArrayList<>();
+            options = op.split("\\s*,\\s*");
+            for(String s : options){
+                columns.add(Integer.parseInt(s)-1);
+            }
+            qR.printSelectedColumns(columns);
+        }
+    }
 }
